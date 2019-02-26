@@ -68,4 +68,12 @@ public class Alumno extends Persona{
         } 
          return null;
      }
+     
+     public float promedioAlumno(){
+         float acu=0;
+         for (int i = 0; i < m; i++) {
+             acu= acu + materias[i].promedio();
+         }
+         return acu/m;
+     }
 }

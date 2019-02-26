@@ -85,5 +85,14 @@ public class Grupo {
             alumnos[i].agregarMateria(m5);
         }
     }
+    
+    public float promedioGrupo(){
+       float acu=0;
+         for (int i = 0; i < a; i++) {
+             acu=acu+ alumnos[i].promedioAlumno();
+         }
+         
+         return acu/a;
+    }
 
 }

@@ -52,20 +52,10 @@ public class Carrera {
   public float promedioCarrera(){
       float acu=0;
       for (int i = 0; i < noDeGruposActivos; i++) {
-          acu=acu+ grupos[i].promedio();
+          acu=acu+ grupos[i].promedioGrupo();
       }
       return acu/noDeGruposActivos;
   }
 
-  public String calificacionMasAltaDeLaCarrera(){
-       float masAlta=0;
-       String nombre="";
-        for (int i = 0; i < noDeGruposActivos; i++) {
-            if (grupos[i].calificacionMasAlta()> masAlta) {
-                masAlta=grupos[i].calificacionMasAlta();
-               nombre=grupos[i].getNombre();
-            }
-        }           
-        return nombre + " Calificacion mas alta: "+ masAlta;
-  }
+ 
 }

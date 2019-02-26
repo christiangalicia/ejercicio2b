@@ -36,4 +36,8 @@ public class Materia {
         this.parcial2 = parcial2;
     }
     
+    public float promedio(){
+        return (parcial1+parcial2)/2;
+    }
+    
 }

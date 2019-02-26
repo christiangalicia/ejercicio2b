@@ -94,5 +94,13 @@ public class Grupo {
          
          return acu/a;
     }
+    
+    public String listaAlumnos(){
+        String acu="";
+        for (int i = 0; i < a; i++) {
+            acu= acu+ alumnos[i].nombreCompleto()+"\n";
+        }
+        return acu;
+    }
 
 }

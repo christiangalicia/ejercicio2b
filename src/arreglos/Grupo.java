@@ -21,7 +21,10 @@ public class Grupo {
     public Grupo(int noAlumnos, String nombre) {
         alumnos = new Alumno[noAlumnos];
         this.nombre = nombre;
-        a = 0;
+        a = 2;
+        
+        alumnos[0]=new Alumno("christian", "galicia", "garcia", "hombre",new Date("17/07/1984") , 123, nombre, "tics");
+        alumnos[1]=new Alumno("christian", "galicia", "garcia", "hombre",new Date("4/07/1999"), 124, nombre, "tics");
     }
 
     public String getNombre() {
@@ -47,33 +50,33 @@ public class Grupo {
         }
     }
 
-    public void agregarCalificacionParcial1(int matricula,
-            String materia, float calificacion) {
-        for (int i = 0; i < a; i++) {
-            if (matricula == alumnos[i].getMatricula()) {
-                alumnos[i].obtenerMateria(materia).setParcial1(calificacion);
-            }
-        }
-    }
+//    public void agregarCalificacionParcial1(int matricula,
+//            String materia, float calificacion) {
+//        for (int i = 0; i < a; i++) {
+//            if (matricula == alumnos[i].getMatricula()) {
+//                alumnos[i].obtenerMateria(materia).setParcial1(calificacion);
+//            }
+//        }
+//    }
+//
+//    public void agregarCalificacionParcial2(int matricula,
+//            String materia, float calificacion) {
+//        for (int i = 0; i < a; i++) {
+//            if (matricula == alumnos[i].getMatricula()) {
+//                alumnos[i].obtenerMateria(materia).setParcial2(calificacion);
+//            }
+//        }
+//
+//    }
 
-    public void agregarCalificacionParcial2(int matricula,
-            String materia, float calificacion) {
-        for (int i = 0; i < a; i++) {
-            if (matricula == alumnos[i].getMatricula()) {
-                alumnos[i].obtenerMateria(materia).setParcial2(calificacion);
-            }
-        }
-
-    }
-
-    public Materia obtenerMateriaAlumno(int matricula, String materia) {
-        for (int i = 0; i < a; i++) {
-            if (matricula == alumnos[i].getMatricula()) {
-                return alumnos[i].obtenerMateria(materia);
-            }
-        }
-        return null;
-    }
+//    public Materia obtenerMateriaAlumno(int matricula, String materia) {
+//        for (int i = 0; i < a; i++) {
+//            if (matricula == alumnos[i].getMatricula()) {
+//                return alumnos[i].obtenerMateria(materia);
+//            }
+//        }
+//        return null;
+//    }
     
     public void generarMaterias(String m1, String m2, String m3,
             String m4,String m5){
@@ -98,7 +101,7 @@ public class Grupo {
     public String listaAlumnos(){
         String acu="";
         for (int i = 0; i < a; i++) {
-            acu= acu+ alumnos[i].nombreCompleto()+"\n";
+            acu= acu+ alumnos[i].nombreCompleto()+"\n" ;
         }
         return acu;
     }

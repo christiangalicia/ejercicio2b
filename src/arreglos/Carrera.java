@@ -19,7 +19,9 @@ public class Carrera {
   public Carrera(String nombre){
       grupos= new Grupo[10];
       this.nombre = nombre;
-      noDeGruposActivos=0;
+      noDeGruposActivos=2;
+      grupos[0]= new Grupo(5, "2b");
+      grupos[1]= new Grupo(7, "2a");
   }
   
   public void crearNuevoGrupo(int noAlumnos, String nombre){
@@ -28,18 +30,18 @@ public class Carrera {
       noDeGruposActivos++;
   }
   
-  public void agregarAlumnoGrupo(String grupo,String nombre,String paterno,
-       String materno, String sexo, Date fechaNacimiento, int matricula,
-                String carrera){
-      for (int i = 0; i < noDeGruposActivos; i++) {
-         if(grupo.equals(grupos[i].getNombre())){
-              grupos[i].agregarAlumno(nombre, paterno, materno, sexo,
-                      fechaNacimiento, matricula, carrera, grupo);
-              
-          } 
-      }
-  }
-  
+//  public void agregarAlumnoGrupo(String grupo,String nombre,String paterno,
+//       String materno, String sexo, Date fechaNacimiento, int matricula,
+//                String carrera){
+//      for (int i = 0; i < noDeGruposActivos; i++) {
+//         if(grupo.equals(grupos[i].getNombre())){
+//              grupos[i].agregarAlumno(nombre, paterno, materno, sexo,
+//                      fechaNacimiento, matricula, carrera, grupo);
+//              
+//          } 
+//      }
+//  }
+//  
   public Grupo obtenerGrupo(String nombre){
       for (int i = 0; i < noDeGruposActivos; i++) {
          if(nombre.equals(grupos[i].getNombre())){

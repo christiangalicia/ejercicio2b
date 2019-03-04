@@ -34,4 +34,7 @@ public class Persona {
         long tiempo= fechaAtual.getTime()-fechaNacimiento.getTime();
         return (int)(tiempo/1000/60/60/24/365);
     }
+    public String informacion(){
+        return "";
+    }
 }

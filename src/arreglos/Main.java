@@ -53,6 +53,9 @@ public class Main {
                         System.out.println("3 para agregar materia al grupo");
                         System.out.println("4 consultar alumno");
                         System.out.println("5 consultar alumnos grupo");
+                        System.out.println("6 consultar profesores grupo");
+                        System.out.println("7 Agregar profesores grupo");
+                         System.out.println("8 reporte personalizado");
                         opcion2 = leer.nextInt();
                         if (opcion2 == 1) {
                             System.out.println("ingresa nombre");
@@ -76,6 +79,32 @@ public class Main {
                             System.out.println(g.promedioGrupo());
                         } else if (opcion2 == 5) {
                             System.out.println(g.listaAlumnos());
+                        }else if(opcion2==6){
+                            System.out.println(g.listaProfesores());
+                        }else if(opcion2==7){
+                            System.out.println("ingresa nombre");
+                            String nombre = leer.next();
+                            System.out.println("ingresa apellido paterno");
+                            String paterno = leer.next();
+                            System.out.println("ingresa apellido materno");
+                            String materno = leer.next();
+                            System.out.println("ingresa sexo");
+                            String sexo = leer.next();
+                            System.out.println("ingresa Grado de estudios");
+                            String grado = leer.next();
+                            System.out.println("ingresa tipo de profesor");
+                            String tipo = leer.next();
+                            System.out.println("ingresa fecha de nacimiento");
+                            String fecha = leer.next();
+                             System.out.println("ingresa materia que imparte");
+                            String materia = leer.next();
+                            Date fechaNacimiento = new Date(fecha);
+                            g.agregarProfesor(nombre, paterno, materno, sexo, fechaNacimiento, 
+                                    grado,tipo,materia);
+                        }else if(opcion2==8){
+                            System.out.println("ingresa profesor o alumno");
+                            String tipo = leer.next();
+                            System.out.println(g.reporteInformacionPersona(tipo));
                         }
                     }
                 }

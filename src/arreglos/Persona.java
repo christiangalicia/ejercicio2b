@@ -37,4 +37,12 @@ public class Persona {
     public String informacion(){
         return "";
     }
+    
+    public String CURP(){
+        String curp = paterno.substring(0, 2)+
+                materno.substring(0,1)+
+                nombre.substring(0,1)+
+                fechaNacimiento.getYear();
+        return curp;
+    }
 }

@@ -18,7 +18,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-
+        try{
         Scanner leer = new Scanner(System.in);
         int opcion = 10;
         Carrera tics = new Carrera("tics");
@@ -55,9 +55,11 @@ public class Main {
                         System.out.println("5 consultar alumnos grupo");
                         System.out.println("6 consultar profesores grupo");
                         System.out.println("7 Agregar profesores grupo");
-                         System.out.println("8 reporte personalizado");
+                         System.out.println("8 reporte info Alumnos");
+                         System.out.println("9 reporte info Docentes");
                         opcion2 = leer.nextInt();
                         if (opcion2 == 1) {
+                           
                             System.out.println("ingresa nombre");
                             String nombre = leer.next();
                             System.out.println("ingresa apellido paterno");
@@ -74,7 +76,7 @@ public class Main {
 
                             g.agregarAlumno(nombre, paterno, materno, sexo,
                                     fechaNacimiento, matricula, "TIC", nombreGrupo);
-
+                            
                         } else if (opcion2 == 2) {
                             System.out.println(g.promedioGrupo());
                         } else if (opcion2 == 5) {
@@ -93,6 +95,7 @@ public class Main {
                             System.out.println("ingresa Grado de estudios");
                             String grado = leer.next();
                             System.out.println("ingresa tipo de profesor");
+                            
                             String tipo = leer.next();
                             System.out.println("ingresa fecha de nacimiento");
                             String fecha = leer.next();
@@ -102,15 +105,28 @@ public class Main {
                             g.agregarProfesor(nombre, paterno, materno, sexo, fechaNacimiento, 
                                     grado,tipo,materia);
                         }else if(opcion2==8){
-                            System.out.println("ingresa profesor o alumno");
-                            String tipo = leer.next();
-                            System.out.println(g.reporteInformacionPersona(tipo));
+                            System.out.println(g.reporteDocentes());
+                        }else if(opcion2==9){
+                            System.out.println(g.reporteAlumnos());
                         }
                     }
                 }
             }
         }
-
+        }catch(java.util.InputMismatchException e){
+            System.out.println("Debes ingresar correctamente los datos");
+            System.out.println(e);
+        }catch(java.lang.ArrayIndexOutOfBoundsException e){
+            System.out.println("No se pueden agregar mas registros");
+            System.out.println(e);
+        }catch(Exception e){
+            System.out.println("Error desconocido");
+            System.out.println(e);
+        }catch(Error e){
+            
+        }finally{
+            System.out.println("algo mas");
+        }
     }
 
 }

@@ -24,34 +24,47 @@ public class Grupo {
         profesores = new Profesor[5];
         this.nombre = nombre;
         a = 2;
-        p=2;
-        alumnos[0]=new Alumno("christian", "galicia", "garcia", "hombre",new Date("17/07/1984") , 123, nombre, "tics");
-        alumnos[1]=new Alumno("david", "carrillo", "garcia", "hombre",new Date("4/07/1999"), 124, nombre, "tics");
-       profesores[0]=new Profesor("luis", "galicia", "garcia", "hombre",new Date("17/07/1984") , "maestria", "ptc", "programacion");
-        profesores[1]=new Profesor("david", "carrillo", "garcia", "hombre",new Date("4/07/1999"), "doctorado", "ptc", "QUimica");
+        p = 2;
+        alumnos[0] = new Alumno("christian", "galicia", "garcia", "hombre", new Date("17/07/1984"), 123, nombre, "tics");
+        alumnos[1] = new Alumno("david", "carrillo", "garcia", "hombre", new Date("4/07/1999"), 12445, nombre, "tics");
+       
+        profesores[0] = new Profesor("luis", "galicia", "garcia", "hombre", new Date("17/07/1984"), "maestria", "ptc", "programacion");
+        profesores[1] = new Profesor("david", "carrillo", "garcia", "hombre", new Date("4/07/1999"), "doctorado", "ptc", "QUimica");
     }
-
+    public int getTamanoGrupo(){
+        return alumnos.length;
+    }
+    public int getNoAlumnos(){
+        return a;
+    }
     public String getNombre() {
         return nombre;
     }
+
     public void agregarProfesor(String nombre, String paterno, String materno,
-                String sexo,Date fechaNacimiento,String gradoE,
-                String tipoP, String materia){
-       
-        Profesor pr= new Profesor(nombre, paterno, materno, 
+            String sexo, Date fechaNacimiento, String gradoE,
+            String tipoP, String materia) {
+
+        Profesor pr = new Profesor(nombre, paterno, materno,
                 sexo, fechaNacimiento, gradoE, tipoP, materia);
-        profesores[p]=pr;
+        profesores[p] = pr;
         p++;
     }
+
     public void agregarAlumno(String nombre, String paterno, String materno,
-            String sexo, Date fechaNacimiento, int matricula,
-            String carrera, String grupo) {
-
+          
+            String sexo, Date fechaNacimiento , int matricula,
+         String carrera , String grupo) {
+        try{
         Alumno alumno = new Alumno(nombre, paterno, materno, sexo,
-                fechaNacimiento, matricula, carrera, grupo);
+                    fechaNacimiento, matricula, carrera, grupo);
 
-        alumnos[a] = alumno;
-        a++;
+            alumnos[a] = alumno;
+            a++;
+        }catch(Exception e){
+            System.out.println("Error no se pueden agregar mas alumnos");
+        }
+       
     }
 
     public void agregarMateria(String materia, int matricula) {
@@ -80,7 +93,6 @@ public class Grupo {
 //        }
 //
 //    }
-
 //    public Materia obtenerMateriaAlumno(int matricula, String materia) {
 //        for (int i = 0; i < a; i++) {
 //            if (matricula == alumnos[i].getMatricula()) {
@@ -89,13 +101,12 @@ public class Grupo {
 //        }
 //        return null;
 //    }
-    
     public void generarMaterias(
             String m1, String p1,
             String m2, String p2,
-            String m3,String p3,
-            String m4,String p4,
-            String m5, String p5){
+            String m3, String p3,
+            String m4, String p4,
+            String m5, String p5) {
         for (int i = 0; i < a; i++) {
             alumnos[i].agregarMateria(m1);
             alumnos[i].agregarMateria(m2);
@@ -104,42 +115,46 @@ public class Grupo {
             alumnos[i].agregarMateria(m5);
         }
     }
-    
-    public float promedioGrupo(){
-       float acu=0;
-         for (int i = 0; i < a; i++) {
-             acu=acu+ alumnos[i].promedioAlumno();
-         }
-         
-         return acu/a;
-    }
-    
-    public String listaAlumnos(){
-        String acu="";
+
+    public float promedioGrupo() {
+        float acu = 0;
         for (int i = 0; i < a; i++) {
-            acu= acu+ alumnos[i].nombreCompleto()+"\n" ;
+            acu = acu + alumnos[i].promedioAlumno();
+        }
+
+        return acu / a;
+    }
+
+    public String listaAlumnos() {
+        String acu = "MATRICULA\tEDAD\tCURP\t\tNOMBRE\n";
+
+        for (int i = 0; i < a; i++) {
+            acu = acu + alumnos[i].getMatricula() + "\t\t" + alumnos[i].edad() + "\t" + alumnos[i].CURP() + "\t\t" + alumnos[i].nombreCompleto() + "\n";
         }
         return acu;
     }
-    public String listaProfesores(){
-        String acu="";
+
+    public String listaProfesores() {
+        String acu = "";
         for (int i = 0; i < p; i++) {
-            acu += profesores[i].nombreCompleto()+"\t"
-                    +profesores[i].getMateria()+"\n";
+            acu += profesores[i].nombreCompleto() + "\t"
+                    + profesores[i].getMateria() + "\n";
         }
         return acu;
     }
-    
-    public String reporteInformacionPersona(String tipoPersona){
-        Persona[] personas;
-        String acu="";
-        if ("profesor".equals(tipoPersona)){
-            personas= profesores;
-        }else{
-            personas=alumnos;
-        }
+
+    public String reporteDocentes() {
+        return reporteInformacionPersona(profesores);
+    }
+
+    public String reporteAlumnos() {
+        return reporteInformacionPersona(alumnos);
+    }
+
+    private String reporteInformacionPersona(Persona[] personas) {
+        String acu = "";
         for (int i = 0; i < personas.length; i++) {
-            if(personas[i]!=null){
+            if (personas[i] != null) {
                 acu += personas[i].informacion();
             }
         }

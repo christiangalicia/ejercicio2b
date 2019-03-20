@@ -29,6 +29,9 @@ public class Carrera {
       grupos[noDeGruposActivos]=nuevo;
       noDeGruposActivos++;
   }
+  public Grupo[] getGrupos(){
+      return grupos;
+  }
   
 //  public void agregarAlumnoGrupo(String grupo,String nombre,String paterno,
 //       String materno, String sexo, Date fechaNacimiento, int matricula,
